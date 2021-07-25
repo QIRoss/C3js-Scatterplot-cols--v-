@@ -52,6 +52,20 @@ req.onload = () => {
                 max: 2015,
                 min: 1995
             }
+        },
+        tooltip: {
+            format: {
+                value: function(value, ratio, id, index) {
+                    const dataset = id === "Riders with doping allegations" ? doped : clean;
+                    const athlete = dataset[index];
+                    const result = athlete.Name + ':' + athlete.Nationality + '<br>'
+                        + 'Year: ' + athlete.Year + '<br>'
+                        + 'Time: ' + athlete.Time + '<br>'
+                        + athlete.Doping + '<br>'
+                        + athlete.URL;
+                    return result;
+                },
+            },
         }
     });
 }
